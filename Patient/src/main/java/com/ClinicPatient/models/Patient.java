@@ -3,6 +3,8 @@ package com.ClinicPatient.models;
 import java.util.Date;
 import java.util.UUID;
 
+import com.ClinicPatient.models.Enums.Gender;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,7 +39,7 @@ public class Patient {
   @Column(length = 50, nullable = false, unique = true)
   private String email;
 
-  @Column(length = 10, nullable = false)
-  private String gender;
+  @Column(nullable = false)
+  private Gender gender;
 }
 
