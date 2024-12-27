@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.ClinicPatient.models.Patient;
 import com.ClinicPatient.models.responses.GetResponse;
 
+@Component
 public class PatientMapper {
 
   @Autowired
