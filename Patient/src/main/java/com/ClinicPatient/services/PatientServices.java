@@ -53,8 +53,8 @@ public class PatientServices implements IServices<Patient> {
   }
 
   @Transactional
-  public void delete(Patient entity) {
-    Patient patient = getById(entity.getId());
+  public void delete(Integer id) {
+    Patient patient = getById(id);
     this.repository.delete(patient);
   }
 

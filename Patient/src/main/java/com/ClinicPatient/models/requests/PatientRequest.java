@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreatePatientRequest {
+public class PatientRequest {
   private String name;
   private Integer age;
   private String taxNumber;

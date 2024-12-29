@@ -6,6 +6,6 @@ public interface IServices<T> {
   T getById(Integer id);
   List<T> getAll();
   void update(T value);
-  void delete(T value);
+  void delete(Integer value);
   void save(T value);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ClinicPatient.mapper.PatientMapper;
 import com.ClinicPatient.models.Patient;
-import com.ClinicPatient.models.requests.CreatePatientRequest;
+import com.ClinicPatient.models.requests.PatientRequest;
 import com.ClinicPatient.models.responses.GetResponse;
 import com.ClinicPatient.services.PatientServices;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/patient")
@@ -40,7 +42,7 @@ public class PatientController {
   }
 
   @PostMapping
-  public ResponseEntity<Patient> postMethodName(@RequestBody CreatePatientRequest entity) {
+  public ResponseEntity<Patient> postMethodName(@RequestBody PatientRequest entity) {
     Patient patient = this.mapper.mapperCreateRequestToPatient(entity);
 
     services.save(patient);
@@ -51,4 +53,16 @@ public class PatientController {
     return ResponseEntity.created(uri).body(patient);
   }
 
+  @PutMapping("/{id}")
+  public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody PatientRequest entity) {
+    Patient patient = this.mapper.mapperCreateRequestToPatient(entity);
+    this.services.update(patient);
+    return ResponseEntity.ok().body("Patient updated successully");
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> delete(@PathVariable Integer id) {
+    this.services.delete(id);
+    return ResponseEntity.ok().body("Patient deleted successfully");
+  }
 }
