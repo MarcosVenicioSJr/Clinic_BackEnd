@@ -1,7 +1,6 @@
 package com.ClinicPatient.models;
 
 import java.util.Date;
-import java.util.UUID;
 
 import com.ClinicPatient.models.Enums.Gender;
 
@@ -24,9 +23,10 @@ public class Patient {
   public Patient() {
   }
 
-  public Patient(String name, String taxNumber, Date birthDate, String phoneNumber, String email, Gender gender, Address address) {
+  public Patient(String name, String taxNumber, Integer age, Date birthDate, String phoneNumber, String email, Gender gender, Address address) {
     this.name = name;
     this.taxNumber = taxNumber;
+    this.age = age;
     this.birthDate = birthDate;
     this.phoneNumber = phoneNumber;
     this.email = email;
@@ -35,8 +35,8 @@ public class Patient {
   }
 
   @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
   @Column(length = 20, nullable = false)
   private String name;

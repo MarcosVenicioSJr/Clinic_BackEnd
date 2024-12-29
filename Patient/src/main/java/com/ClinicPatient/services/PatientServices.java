@@ -2,7 +2,6 @@ package com.ClinicPatient.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class PatientServices implements IServices<Patient> {
   @Autowired
   private PatientRepository repository;
 
-  public Patient getById(UUID id) {
+  public Patient getById(Integer id) {
     Optional<Patient> entity = this.repository.findById(id);
     return entity.orElse(new Patient());
   }
@@ -57,6 +56,7 @@ public class PatientServices implements IServices<Patient> {
   @Transactional
   public void save(Patient entity) {
     entity.setId(null);
+    entity.getAddress().setId(null);
     this.repository.save(entity);
   }
 }

@@ -1,7 +1,6 @@
 package com.ClinicPatient.models;
 
-import java.util.UUID;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,8 +15,8 @@ import lombok.Setter;
 @Entity(name = "address")
 public class Address {
   @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
   @Column(length = 20, nullable = false)
   private String street;
   @Column(length = 20, nullable = false)
@@ -28,6 +27,6 @@ public class Address {
   private String zipCode;
   @Column(length = 20, nullable = false)
   private String country;
-  @OneToOne(mappedBy = "address")
+  @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
   private Patient patient;
 }

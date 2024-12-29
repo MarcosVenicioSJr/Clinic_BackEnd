@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ClinicPatient.models.Patient;
+import com.ClinicPatient.models.requests.CreatePatientRequest;
 import com.ClinicPatient.models.responses.GetResponse;
 
 @Component
@@ -24,9 +25,17 @@ public class PatientMapper {
     List<GetResponse> responses = new ArrayList<GetResponse>();
 
     for (Patient entity : entities) {
-      responses.add(mapper.map(entity, GetResponse.class));  
+      responses.add(mapper.map(entity, GetResponse.class));
     }
 
     return responses;
+  }
+
+  public Patient mapperCreateRequestToPatient(CreatePatientRequest request) {
+    Patient patient = new Patient(request.getName(), request.getTaxNumber(),
+        request.getAge(), request.getBirthDate(), request.getPhoneNumber(),
+        request.getEmail(), request.getGender(), request.getAddress());
+
+    return patient;
   }
 }
