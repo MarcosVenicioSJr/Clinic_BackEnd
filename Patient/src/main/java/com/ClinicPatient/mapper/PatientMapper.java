@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ClinicPatient.models.Patient;
-import com.ClinicPatient.models.requests.CreatePatientRequest;
+import com.ClinicPatient.models.requests.PatientRequest;
 import com.ClinicPatient.models.responses.GetResponse;
 
 @Component
@@ -31,7 +31,7 @@ public class PatientMapper {
     return responses;
   }
 
-  public Patient mapperCreateRequestToPatient(CreatePatientRequest request) {
+  public Patient mapperCreateRequestToPatient(PatientRequest request) {
     Patient patient = new Patient(request.getName(), request.getTaxNumber(),
         request.getAge(), request.getBirthDate(), request.getPhoneNumber(),
         request.getEmail(), request.getGender(), request.getAddress());
