@@ -1,11 +1,8 @@
-# Use uma imagem base do Java
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
-# Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copia o JAR gerado para dentro do container
-COPY target/Patient.jar app.jar
+COPY target/Patient-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
